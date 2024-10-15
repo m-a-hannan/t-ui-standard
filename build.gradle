@@ -1,0 +1,18 @@
+// Project-level build.gradle (D:\Documents\TUI-ConsoleLauncher\build.gradle)
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.7.0'
+        // Update this to a newer version if necessary
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}

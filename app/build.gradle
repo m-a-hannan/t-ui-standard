@@ -1,0 +1,54 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace "ohi.andre.consolelauncher" // Add this line
+    compileSdkVersion 33
+    buildToolsVersion '33.0.2'
+
+    defaultConfig {
+        applicationId "ohi.andre.consolelauncher"
+        minSdkVersion 21
+        targetSdkVersion 33
+
+        versionCode 205
+        versionName "v6.15"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+        }
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lint {
+        checkReleaseBuilds false
+    }
+
+
+    applicationVariants.all { variant ->
+        def formattedDate = new Date().format('hh.mm')
+
+        variant.outputs.all {
+            outputFileName = "./${variant.versionName}/${variant.applicationId}_${variant.getFlavorName()}_${variant.versionCode}_${formattedDate}.apk"
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'net.sourceforge.htmlcleaner:htmlcleaner:2.29'
+    implementation 'com.jayway.jsonpath:json-path:2.9.0'
+    implementation 'org.jsoup:jsoup:1.18.1'
+    implementation 'it.andreuzzi:CompareString2:1.0.9'
+}
